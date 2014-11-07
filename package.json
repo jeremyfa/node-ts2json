@@ -1,6 +1,6 @@
 {
   "name": "ts2json",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Get JSON SyntaxTree from TypeScript files",
   "main": "src/ts2json.js",
   "scripts": {

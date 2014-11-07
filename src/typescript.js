@@ -17016,12 +17016,15 @@ var TypeScript;
             function LargeScannerToken(_packedFullStartAndInfo, _packedFullWidthAndKind, cachedText) {
                 this._packedFullStartAndInfo = _packedFullStartAndInfo;
                 this._packedFullWidthAndKind = _packedFullWidthAndKind;
+                this._fullStart = largeTokenUnpackFullStart(this._packedFullStartAndInfo);
+                this._fullWidth = largeTokenUnpackFullWidth(this._packedFullWidthAndKind);
                 if (cachedText !== undefined) {
                     this.cachedText = cachedText;
                 }
             }
             LargeScannerToken.prototype.setFullStart = function (fullStart) {
                 this._packedFullStartAndInfo = largeTokenPackFullStartAndInfo(fullStart, largeTokenUnpackTriviaInfo(this._packedFullStartAndInfo));
+                this._fullStart = fullStart;
             };
             LargeScannerToken.prototype.syntaxTreeText = function (text) {
                 var result = text || TypeScript.syntaxTree(this).text;
