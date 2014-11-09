@@ -17121,7 +17121,7 @@ var TypeScript;
                 var trailingTriviaInfo = scanTriviaInfo(true);
                 var fullWidth = index - fullStart;
                 var kind = kindAndIsVariableWidth & 127 /* KindMask */;
-                var isFixedWidth = kind >= TypeScript.SyntaxKind.FirstFixedWidth && kind <= TypeScript.SyntaxKind.LastFixedWidth && ((kindAndIsVariableWidth & 128 /* IsVariableWidthMask */) === 0);
+                var isFixedWidth = false; //kind >= TypeScript.SyntaxKind.FirstFixedWidth && kind <= TypeScript.SyntaxKind.LastFixedWidth && ((kindAndIsVariableWidth & 128 /* IsVariableWidthMask */) === 0);
                 if (isFixedWidth && leadingTriviaInfo === 0 && trailingTriviaInfo === 0 && fullStart <= 8388607 /* FixedWidthTokenMaxFullStart */ && (kindAndIsVariableWidth & 128 /* IsVariableWidthMask */) === 0) {
                     return new FixedWidthTokenWithNoTrivia((fullStart << 7 /* FixedWidthTokenFullStartShift */) | kind);
                 }
