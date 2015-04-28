@@ -6,10 +6,10 @@ var fs = require('fs');
 eval(String(fs.readFileSync(__dirname+'/typescript.js')));
 
 // Export function
-module.exports = function(source) {
+module.exports = function(source, isDeclaration) {
     source = String(source);
-    var syntaxTree = TypeScript.Parser.parse('source.ts', TypeScript.SimpleText.fromString(source), 1 /*ES5*/, /*isDeclaration*/ false);
-    
+    var syntaxTree = TypeScript.Parser.parse((isDeclaration ? 'source.d.ts' : 'source.ts'), TypeScript.SimpleText.fromString(source), 1 /*ES5*/, /*isDeclaration*/ !!isDeclaration);
+
     var cache = [];
     var json = JSON.parse(JSON.stringify(syntaxTree, function(key, value) {
         if (typeof value === 'object' && value !== null) {
@@ -26,4 +26,3 @@ module.exports = function(source) {
 
     return json;
 }
-
